@@ -8,9 +8,9 @@ def index():
     return "Hello FastAPI!"
 
 
-@app.get("/property")
-def property():
-    return "This is a property page"
+@app.get("/property/{id}")
+def property(id):
+    return f"This is a property page for property {id}"
 
 
 @app.get("/movies")
