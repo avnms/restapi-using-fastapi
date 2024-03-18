@@ -9,8 +9,13 @@ def index():
 
 
 @app.get("/property/{id}")
-def property(id):
+def property(id: int):
     return f"This is a property page for property {id}"
+
+
+@app.get("/profile/{username}")
+def profile(username: str):
+    return f"This is a profile page for user: {username}"
 
 
 @app.get("/movies")
