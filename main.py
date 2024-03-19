@@ -24,7 +24,28 @@ class Product(BaseModel):
     discount: float
     discounted_price: float
     tags: Set[str] = []
-    image: List[Image]
+    images: List[Image]
+
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "name": "Phone",
+                "price": 100,
+                "discount": 10,
+                "discounted_price": 0,
+                "tags": ["Electronics", "Computers"],
+                "images": [
+                    {
+                        "name": "Phone image",
+                        "url": "www.google.com",
+                    },
+                    {
+                        "name": "Phone image side view",
+                        "url": "www.google.com",
+                    },
+                ],
+            }
+        }
 
 
 class Offer(BaseModel):
