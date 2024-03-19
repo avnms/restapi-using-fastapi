@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Field, HttpUrl
-from typing import Set
+from typing import List, Set
 
 
 class Profile(BaseModel):
@@ -24,7 +24,14 @@ class Product(BaseModel):
     discount: float
     discounted_price: float
     tags: Set[str] = []
-    image: Image
+    image: List[Image]
+
+
+class Offer(BaseModel):
+    name: str
+    description: str
+    price: float
+    products: List[Product]
 
 
 class User(BaseModel):
@@ -93,3 +100,8 @@ def purchase(user: User, product: Product):
         "user": user,
         "product": product,
     }
+
+
+@app.post("/addoffer")
+def add_offer(offer: Offer):
+    return offer
