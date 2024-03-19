@@ -13,7 +13,12 @@ def property(id: int):
     return f"This is a property page for property {id}"
 
 
-@app.get("/profile/{username}")
+@app.get("/user/admin")
+def admin():
+    return "This is admin page"
+
+
+@app.get("/user/{username}")
 def profile(username: str):
     return f"This is a profile page for user: {username}"
 
