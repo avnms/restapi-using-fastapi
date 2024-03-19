@@ -15,6 +15,11 @@ class Product(BaseModel):
     discounted_price: float
 
 
+class User(BaseModel):
+    name: str
+    email: str
+
+
 app = FastAPI()
 
 
@@ -67,4 +72,12 @@ def add_product(product: Product, product_id: int, category: str):
         "product_id": product_id,
         "product": product,
         "category": category,
+    }
+
+
+@app.post("/purchse")
+def purchase(user: User, product: Product):
+    return {
+        "user": user,
+        "product": product,
     }
