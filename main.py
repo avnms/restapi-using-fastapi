@@ -1,6 +1,17 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Field, HttpUrl
 from typing import List, Set
+from uuid import UUID
+from datetime import date, time, datetime, timedelta
+
+
+class Event(BaseModel):
+    event_id: UUID
+    start_date: date
+    start_time: datetime
+    end_time: datetime
+    repeat_time: time
+    execute_after: timedelta
 
 
 class Profile(BaseModel):
@@ -126,3 +137,8 @@ def purchase(user: User, product: Product):
 @app.post("/addoffer")
 def add_offer(offer: Offer):
     return offer
+
+
+@app.post("/addevent")
+def add_event(event: Event):
+    return event
