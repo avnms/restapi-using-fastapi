@@ -8,6 +8,13 @@ class Profile(BaseModel):
     age: int
 
 
+class Product(BaseModel):
+    name: str
+    price: float
+    discount: float
+    discounted_price: float
+
+
 app = FastAPI()
 
 
@@ -51,3 +58,9 @@ def profile(user_id: int, comment_id: int):
 @app.post("/adduser")
 def add_user(profile: Profile):
     return profile
+
+
+@app.post("/addproduct")
+def add_product(product: Product):
+    product.discounted_price = product.price - (product.price * product.discount) / 100
+    return product
