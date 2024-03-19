@@ -38,3 +38,8 @@ def profile(user_id: int, comment_id: int):
     return (
         f"Profile page for user with user id {user_id} and comment with id {comment_id}"
     )
+
+
+@app.post("/adduser")
+def add_user():
+    return "user data"
