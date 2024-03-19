@@ -23,6 +23,11 @@ def profile(username: str):
     return f"This is a profile page for user: {username}"
 
 
+@app.get("/products")
+def products(id, price):
+    return f"Product with an id: {id} and price {price}"
+
+
 @app.get("/movies")
 def movies():
     return {"movie list": ["Movie_1, Movie_2"]}
