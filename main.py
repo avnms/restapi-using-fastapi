@@ -18,6 +18,11 @@ def admin():
     return "This is admin page"
 
 
+@app.get("/movies")
+def movies():
+    return {"movie list": ["Movie_1, Movie_2"]}
+
+
 @app.get("/user/{username}")
 def profile(username: str):
     return f"This is a profile page for user: {username}"
@@ -28,6 +33,8 @@ def products(id: int = 1, price: float = 0):
     return f"Product with an id: {id} and price {price}"
 
 
-@app.get("/movies")
-def movies():
-    return {"movie list": ["Movie_1, Movie_2"]}
+@app.get("/profile/{user_id}/comments")
+def profile(user_id: int, comment_id: int):
+    return (
+        f"Profile page for user with user id {user_id} and comment with id {comment_id}"
+    )
