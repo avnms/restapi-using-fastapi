@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
+from typing import Set
 
 
 class Profile(BaseModel):
@@ -17,6 +18,7 @@ class Product(BaseModel):
     )
     discount: float
     discounted_price: float
+    tags: Set[str] = []
 
 
 class User(BaseModel):
