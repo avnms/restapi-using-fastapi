@@ -1,4 +1,12 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
+
+
+class Profile(BaseModel):
+    name: str
+    email: str
+    age: int
+
 
 app = FastAPI()
 
@@ -41,5 +49,5 @@ def profile(user_id: int, comment_id: int):
 
 
 @app.post("/adduser")
-def add_user():
-    return "user data"
+def add_user(profile: Profile):
+    return profile
