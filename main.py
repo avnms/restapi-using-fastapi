@@ -29,7 +29,7 @@ def profile(username: str):
 
 
 @app.get("/products")
-def products(id: int = 1, price: float = 0):
+def products(id: int = None, price: float = None):
     return f"Product with an id: {id} and price {price}"
 
 
